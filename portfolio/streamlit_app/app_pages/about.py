@@ -41,11 +41,14 @@ st.header("Let's Connect!")
 st.write("""
 I'm always excited to connect with fellow tech enthusiasts, potential collaborators, or anyone who wants to chat about data, tech, or anything in between. Feel free to reach out to me:""")
 # Add the LinkedIn logo and link
-st.markdown("""
+st.markdown(
+    """
 - **Email:** philippe.paulos@gmail.com 📧
 - **LinkedIn:** [Philippe Paulos](https://www.linkedin.com/in/philippe-p-a42a1487/) 🔗
 - **GitHub:** [github.com/philippepaulos](https://github.com/philippepaulos) 🐱
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 st.write("""
 Thanks for stopping by! I hope you enjoyed getting to know a bit about me. Stay awesome and keep exploring the amazing world of data! 🌟

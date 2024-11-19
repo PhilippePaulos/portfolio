@@ -1,23 +1,30 @@
+import time
 import streamlit as st
 
-from portfolio.streamlit_app.snake_ai.game import SnakeGame
-
-broad_state = {
-    "turn": 0,
-    "snake": {
-        "body": [(5, 2), (4, 2), (3, 2), (2, 2)],
-        "dir": "R",
-    },
-    "food": [(7, 7)],
-}
-
-if 'game' not in st.session_state:
-    st.session_state.game = SnakeGame()
-
-st.write("# The Snake Game")
-
-game = st.session_state.game
-game_state = game.get_state()
+from portfolio.streamlit_app.snake_ai.snake_config import SnakeConfig
+from portfolio.streamlit_app.snake_ai.snake_game import SnakeGame
+from portfolio.streamlit_app.snake_ai.snake_renderer import SnakeRenderer
 
 
-st.markdown("")
+class SnakeApp:
+    def __init__(self):
+        self.game = SnakeGame()
+        self.renderer = SnakeRenderer(self.game)
+
+    def run(self):
+        st.title("Snake Game")
+        game_img = st.image(self.renderer.render(), channels="BGR")
+
+        while not self.game.is_collision:
+            self.game.current_direction = self.game.get_random_direction()
+            self.game.move()
+            if self.game.is_collision:
+                st.write("Game Over!")
+                break
+            board = self.renderer.render()
+            game_img.image(board, channels="BGR")
+            time.sleep(SnakeConfig.REFRESH_TIME)
+
+
+app = SnakeApp()
+app.run()

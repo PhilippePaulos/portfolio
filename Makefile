@@ -14,6 +14,7 @@ help:  ## Display a list of available commands
 	@echo "$(CYAN)run$(RESET)        - Run the Streamlit app using Poetry"
 	@echo "$(CYAN)install$(RESET)    - Install all project dependencies using Poetry"
 	@echo "$(CYAN)lock$(RESET)       - Lock the project dependencies using Poetry"
+	@echo "$(CYAN)format$(RESET)     - Format files using ruff library"
 	@echo ""
 
 run: ## Run the Streamlit app using Poetry
@@ -24,3 +25,6 @@ install: ## Install all project dependencies using Poetry
 
 lock: ## Lock project dependencies using Poetry
 	poetry lock --no-update
+
+format:
+	poetry run ruff format .
