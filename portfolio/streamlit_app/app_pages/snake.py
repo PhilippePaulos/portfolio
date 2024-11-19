@@ -12,17 +12,15 @@ class SnakeApp:
         self.renderer = SnakeRenderer(self.game)
 
     def run(self):
-        st.title("Snake Game")
         game_img = st.image(self.renderer.render(), channels="BGR")
 
         while not self.game.is_collision:
             self.game.current_direction = self.game.get_random_direction()
             self.game.move()
-            if self.game.is_collision:
-                st.write("Game Over!")
-                break
             board = self.renderer.render()
             game_img.image(board, channels="BGR")
+            if self.game.is_collision:
+                break
             time.sleep(SnakeConfig.REFRESH_TIME)
 
 

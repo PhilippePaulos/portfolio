@@ -18,6 +18,7 @@ class SnakeGame:
         self.current_direction = Direction.LEFT
         self.last_direction = Direction.LEFT
         self.is_collision = False
+        self.score = 0
 
     def _compute_food_position(self):
         all_positions = [
@@ -48,7 +49,7 @@ class SnakeGame:
                 return head_x, head_y - 1
             elif direction == Direction.UP:
                 return head_x - 1, head_y
-            else:  # Direction.DOWN
+            else:
                 return head_x + 1, head_y
 
         # Prevent reversing direction
@@ -80,6 +81,7 @@ class SnakeGame:
 
         if new_head == self.food_position:
             self.food_position = self._compute_food_position()
+            self.score += 1
         else:
             self.snake.pop()
 
