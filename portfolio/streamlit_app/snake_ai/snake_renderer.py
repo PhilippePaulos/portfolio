@@ -6,7 +6,6 @@ from portfolio.streamlit_app.snake_ai.snake_game import SnakeGame
 
 
 class SnakeRenderer:
-
     def __init__(self, game: SnakeGame):
         self.game = game
 

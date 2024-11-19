@@ -7,8 +7,8 @@ from portfolio.streamlit_app.snake_ai.snake_config import SnakeConfig
 class Direction(Enum):
     RIGHT = "right"
     LEFT = "left"
-    UP = "top"
-    DOWN = "bot"
+    UP = "up"
+    DOWN = "down"
 
 
 class SnakeGame:
