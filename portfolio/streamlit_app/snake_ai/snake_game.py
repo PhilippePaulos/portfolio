@@ -44,13 +44,13 @@ class SnakeGame:
         def get_new_head(head, direction):
             head_x, head_y = head
             if direction == Direction.RIGHT:
-                return head_x, head_y + 1
+                return head_x, (head_y + 1) % SnakeConfig.GRID_SIZE
             elif direction == Direction.LEFT:
-                return head_x, head_y - 1
+                return head_x, (head_y - 1) % SnakeConfig.GRID_SIZE
             elif direction == Direction.UP:
-                return head_x - 1, head_y
+                return (head_x - 1) % SnakeConfig.GRID_SIZE, head_y
             else:
-                return head_x + 1, head_y
+                return (head_x + 1) % SnakeConfig.GRID_SIZE, head_y
 
         # Prevent reversing direction
         opposite = {
@@ -63,14 +63,6 @@ class SnakeGame:
             self.current_direction = self.last_direction
 
         new_head = get_new_head(self.snake[0], self.current_direction)
-
-        # Check for wall collision
-        if not (
-            0 <= new_head[0] < SnakeConfig.GRID_SIZE
-            and 0 <= new_head[1] < SnakeConfig.GRID_SIZE
-        ):
-            self.is_collision = True
-            return
 
         # Check for self-collision
         if new_head in self.snake:
