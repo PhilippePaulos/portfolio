@@ -2,7 +2,8 @@ class SnakeConfig:
     WINDOW_SIZE = 600
     GRID_SIZE = 20
     CELL_SIZE = WINDOW_SIZE // GRID_SIZE
-    SNAKE_COLOR = (0, 255, 0)
+    SNAKE_BODY_COLOR = (0, 255, 0)
+    SNAKE_EYES_COLOR = (0, 0, 0)
     GRID_COLOR = (50, 50, 50)
     BG_COLOR = (30, 30, 30)
     FOOD_COLOR = (0, 0, 255)

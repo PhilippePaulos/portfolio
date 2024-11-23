@@ -1,0 +1,100 @@
+You are tasked with controlling a snake in a grid-based game. The objective is to create an efficient and reliable algorithm that helps the snake collect food in the shortest time while avoiding collisions. Your solution should account for all game mechanics, edge cases, and constraints.
+Game Rules:
+
+    The grid size is a square of configurable dimensions (e.g., 20x20).
+    The snake moves in one of four directions: 'up', 'down', 'left', or 'right'.
+    The snake cannot reverse direction (e.g., if moving 'left', it cannot move 'right' in the next step).
+    If the snake moves out of the grid, it wraps around to the opposite side:
+        Moving right from the last column places it in the first column of the same row.
+        Moving down from the last row places it in the first row of the same column.
+    The snake must avoid colliding with itself, even after wrapping.
+    The snake grows in length when it eats food.
+
+Strategy Goals:
+
+    Efficiency: Minimize the number of moves required to reach the food.
+    Safety: Avoid collisions with the snake's body at all costs.
+    Grid Wrapping: Handle grid wrapping seamlessly for all movement directions.
+    Pathfinding: Use heuristics like Manhattan distance to estimate the shortest path to the food.
+    Dead-End Avoidance: Ensure the snake does not trap itself in tight spaces or dead ends.
+    Fallback Handling: Always handle cases where no valid moves exist gracefully by continuing in the current direction.
+
+Critical Details to Avoid Common Errors:
+1. Coordinate System:
+
+    Use (x, y) to represent positions on the grid.
+    x represents the row (vertical axis).
+    y represents the column (horizontal axis).
+    Ensure that grid wrapping is applied correctly to both x and y coordinates when calculating new positions.
+
+2. Grid Wrapping Logic:
+
+    When moving 'up': Decrease x by 1. Wrap around if x < 0.
+    When moving 'down': Increase x by 1. Wrap around if x >= grid_size.
+    When moving 'left': Decrease y by 1. Wrap around if y < 0.
+    When moving 'right': Increase y by 1. Wrap around if y >= grid_size.
+
+3. Collision Handling:
+
+    Ensure the snake does not collide with its own body, even after wrapping around the grid.
+    A new position is valid only if it is not part of the snake's body (excluding the tail, which moves).
+
+4. Direction Reversal:
+
+    The snake cannot reverse its current direction (e.g., from 'up' to 'down').
+
+5. Manhattan Distance Calculation:
+
+    Use the formula abs(x1 - x2) + abs(y1 - y2) to calculate the distance between two points (x1, y1) and (x2, y2).
+
+6. Fallback Behavior:
+
+    If no valid moves exist (e.g., the snake is trapped), return the current direction as a fallback.
+
+7. Performance Considerations:
+
+    The algorithm must run efficiently, even for large grid sizes (e.g., 50x50) or long snakes.
+
+Function Requirements:
+
+The function must:
+
+    Be named choose_direction.
+    Take the following parameters:
+        snake: A list of (x, y) tuples representing the snake's body, with the head as the first element.
+        food: A tuple (x, y) representing the position of the food.
+        current_direction: A string ('up', 'down', 'left', 'right') representing the current direction.
+        grid_size: An integer representing the grid size (eg. 20 for a 20 grid size).
+    Return a single string: 'up', 'down', 'left', or 'right'.
+    Adhere to all rules and constraints outlined above.
+
+Example:
+Input:
+
+    Snake Body: [(10, 10), (10, 11), (10, 12)] (head is the first element).
+    Food Position: (8, 10).
+    Current Direction: 'up'.
+
+Output:
+
+The function should:
+
+    Avoid collisions with the snake's body.
+    Correctly handle wrapping at the grid's edges.
+    Return the direction that minimizes the distance to the food while adhering to all constraints.
+
+Critical Notes:
+
+    Provide Well-Indented Code Only:
+        Only return the raw Python function code. Do not include any markdown formatting (e.g., ````python`) or comments.
+        The response must consist of valid, well-indented Python code with no extraneous explanations or text.
+
+    Account for Edge Cases:
+        Food adjacent to the snake's head.
+        Snake occupying most of the grid.
+        Food located far away or near the edges.
+        Scenarios where the snake is close to being trapped.
+
+    Test the Logic:
+        Ensure the function handles edge wrapping, body collision, and all constraints without errors.
+        Avoid assumptions not explicitly stated in the problem.
