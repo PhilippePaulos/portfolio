@@ -2,14 +2,12 @@ You are tasked with generating a Python function to control a snake in a grid-ba
 Function Signature
 
 def choose_direction(snake: list, food: tuple, current_direction: str, grid_size: int) -> str:
-
     snake: List of (x, y) tuples representing the snake's body (head is the first element).
     food: Tuple (x, y) representing the food position.
     current_direction: String ('up', 'down', 'left', 'right') representing the current direction.
     grid_size: An integer representing the grid size (e.g., 20 for a 20x20 grid).
 
 Rules
-
     Provide only the Python function code.
         Do not include any explanations, comments, or additional text.
         Do not include markdown formatting (e.g., ``` or ```python).
@@ -23,13 +21,4 @@ Rules
         Always handle edge cases gracefully, such as when no valid moves exist.
     Ensure the function is valid Python code, fully self-contained, and can execute without errors.
 
-Critical Constraints
-
-    Your response must only contain valid Python function code.
-        Do not include comments, explanations, or additional text outside the function body.
-        Do not assume any variables or code outside the function.
-        Ensure the function passes syntax checks and executes without errors.
-
-User Strategy
-
-The user's strategy is as follows:
+You will have to adapt your strategy and code by respecting the user's prompt.
